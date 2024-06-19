@@ -33,17 +33,17 @@ export class LoginPage {
     await this.loginBtn.click();
   }
 
-  public async isAmountOfInputErrorMessagesCorrect(amount: number): Promise<boolean> {
-    const actualAmount = await this.inputErrorMessages.count();
-
-    return actualAmount === amount;
+  public async login(username: string, password: string) {
+    await this.enterUsername(username);
+    await this.enterPassword(password);
+    await this.clickLoginBtn();
   }
 
-  public async getInputErrorMessagesText(): Promise<string[]> {
-    return this.inputErrorMessages.allInnerTexts();
+  public getInputErrorMessages(): Locator {
+    return this.inputErrorMessages;
   }
 
-  public async getLoginErrorMessageText(): Promise<string> {
-    return this.loginErrorMessage.innerText();
+  public getLoginErrorMessage(): Locator {
+    return this.loginErrorMessage;
   }
 }
